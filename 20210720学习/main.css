@@ -1,0 +1,9 @@
+body {
+  background-color: red;
+}
+body a {
+  color: blue;
+}
+body a:hover {
+  color: blueviolet;
+}
