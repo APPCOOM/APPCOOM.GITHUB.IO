@@ -1,0 +1,19 @@
+.box {
+  width: 1276px;
+  height: 602px;
+  background: #dfdbdb;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box .one {
+  width: 1250px;
+  height: 575px;
+  background-color: #6e6a6a;
+  background-image: url("map.png");
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  list-style: none;
+}
+/*# sourceMappingURL=./练习2.css.map */
