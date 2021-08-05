@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+                list-style: none;
+            }
+            #wrap {
+                width: 590px;
+                height: 470px;
+                margin: 150px auto;
+                margin-left: 210px;
+                position: relative;
+                cursor: pointer;
+            }
+
+            #pic li {
+                display: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1;
+            }
+
+            #num {
+                position: absolute;
+                z-index: 2;
+                bottom: 115px;
+                left: 450px;
+            }
+
+            #num li {
+                float: left;
+                width: 8px;
+                height: 8px;
+                margin: 5px;
+                border-radius: 50%;
+                border: 1px solid black;
+                line-height: 20px;
+                background: transparent;
+                text-align: center;
+            }
+
+            #num li.active {
+                background: rgb(224, 9, 9);
+                /* background-color: pink; */
+            }
+
+            .arrow {
+                z-index: 3;
+                height: 40px;
+                width: 30px;
+                position: absolute;
+                top: 45%;
+                line-height: 40px;
+                background: rgba(0, 0, 0, 0.3);
+                text-align: center;
+                display: none;
+            }
+            #wrap:hover .arrow {
+                display: block;
+            }
+            .arrow:hover {
+                /* background: rgba(0, 0, 0, 0.7); */
+                background: pink;
+            }
+           
+            #left {
+                top: 155px;
+                left: 0;
+                
+                
+            }
+
+            #right {
+                /* right: 10px; */
+                top: 155px;
+                left: 1095px;
+            }
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+
+        <ul id="pic">
+            <li style="display: none;"><img src="./images原图/01.jpg" alt=""></li>
+            <li style="display: none;"><img src="./images原图/02.jpg" alt=""></li>
+            <li style="display: block;"><img src="./images原图/03.jpg" alt=""></li>
+            <li style="display: none;"><img src="./images原图/04.jpg" alt=""></li>
+            <li style="display: none;"><img src="./images原图/05.jpg" alt=""></li>
+            <!-- <li style="display: none;"><img src="images/93c8a83baeaa7f49.jpg" alt=""></li>
+            <li style="display: none;"><img src="images/cf523718998ccd27.jpg" alt=""></li> -->
+        </ul>
+        <ul id="num">
+            <li class="active"></li>
+            <li class=""></li>
+            <li class=""></li>
+            <li class=""></li>
+            <li class=""></li>
+            <!-- <li class=""></li>
+            <li class=""></li> -->
+        </ul>
+        <a  class="arrow" id="left">&lt;</a>
+        <a  class="arrow" id="right">&gt;</a>
+    </div>
+    <script type="text/javascript">
+        function $(id) {
+            return document.getElementById(id);
+        }
+        window.onload = function() {
+            var oLeft = $("left");
+            var oRight = $("right");
+            var index = 0;
+            var timer = null;
+            var pic = $("pic").getElementsByTagName("li");
+            var num = $("num").getElementsByTagName("li");
+            var oDiv = $("wrap");
+
+            oRight.onclick = function() {
+                index++;
+                if (index >= pic.length) {
+                    index = 0;
+                }
+                change(index);
+            }
+            oLeft.onclick = function() {
+                index--;
+                if (index < 0) {
+                    index = pic.length - 1;
+                }
+                change(index);
+            }
+            oDiv.onmouseover = function() {
+                clearInterval(timer);
+            }
+            oDiv.onmouseout = function() {
+                timer = setInterval(run, 2000); //鼠标移出后重新开始定时器
+            }
+
+            timer = setInterval(run, 4000); //定时器
+
+            function run() { //用于定时器的函数
+                index++;
+                if (index >= pic.length) {
+                    index = 0;
+                }
+                change(index);
+            }
+
+            for (var i = 0; i < num.length; i++) {
+                num[i].index = i; //把索引值存起来
+                num[i].onmouseover = function() {
+                    change(this.index);
+                }
+            }
+
+            function change(curindex) { //用于切换图片的函数
+                for (var i = 0; i < pic.length; i++) {
+                    pic[i].style.display = "none";
+                    num[i].className = "";
+                }
+                pic[curindex].style.display = "block";
+                num[curindex].className = "active";
+                index = curindex;
+            }
+        }
+    </script>
+
+    
+</body>
+</html>
