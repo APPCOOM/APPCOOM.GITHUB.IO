@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background-image: linear-gradient(to bottom, #ecf5db 0%, #e7d9f1 40%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 500px;
+}
+body .card {
+  width: 320px;
+  height: 500px;
+  position: relative;
+  transition: all 30ms;
+}
+body .card .bg {
+  background-image: url("1.png");
+  background-size: 100% auto;
+  background-position: top center;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transition: inherit;
+}
+body .card img {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transition: inherit;
+}
+body .card .shine {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  height: 100%;
+}
+/*# sourceMappingURL=./练习1.css.map */
