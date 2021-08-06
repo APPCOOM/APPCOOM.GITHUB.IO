@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-image: url("images/bj2.jpg");
+            background-repeat:no-repeat;
+        }
+        .box{
+            width: 800px;
+            margin:50px auto;
+        }
+        .box .bigImg{
+            width: 300px;
+            min-height:600px;
+            margin:0 auto;
+            display:block;
+            border:3px solid rgb(147, 202, 228);
+            border-radius: 20px;
+            margin-bottom: 10px;
+            
+            
+        }
+        .box .nav ul{
+            background: rgb(231, 220, 250);
+            overflow: hidden;
+            padding-top: 5px;
+            padding-bottom: 8px;
+            border-radius: 10px;
+            list-style:none;
+            
+        }
+        .box .nav ul li{
+            float: left;
+            width: 70px;
+            height: 66px;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        .box .nav ul li img{
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            /* transparent透明色 */
+            border:2px solid transparent;
+        }
+        .box .nav ul li img.active{
+            border:2px solid white;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="images/1.jpg" class="bigImg">
+        <!-- .nav导航层 -->
+        <div class="nav">
+            
+            <ul>
+                <li><img src="images/1.jpg" class="active"/></li>
+                <li><img src="images/2.jpg"/></li>
+                <li><img src="images/3.jpg"/></li>
+                <li><img src="images/4.jpg"/></li>
+                <li><img src="images/5.jpg"/></li>
+                <li><img src="images/6.jpg"/></li>
+                <li><img src="images/7.jpg"/></li>
+                <li><img src="images/8.jpg"/></li>
+                <li><img src="images/9.jpg"/></li>
+                <li><img src="images/10.jpg"/></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+       
+        
+        var navImgs = document.querySelectorAll(".nav ul li img");
+        var bigImg = document.querySelector(".bigImg");
+
+        for(var i = 0; i < navImgs.length; i++ ){
+            navImgs[i].onmouseover = function(){
+                
+                bigImg.src = this.src;
+
+                // 排他
+                for(var j = 0; j < navImgs.length;j++ ){
+                    navImgs[j].classList.remove("active");
+                }
+                this.classList.add("active");
+            }
+        }
+        
+    </script>
+</body>
+</html>
