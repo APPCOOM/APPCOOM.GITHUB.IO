@@ -1,32 +1,23 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <!-- 使用vant组件van-开头 -->
+    <!-- :fixed="true"导航栏固定在底部，false在顶部，默认在底部-->
+    <van-tabbar v-if="!$route.meta.hideNav" z-index="999" :fixed="true" route active-color="red" inactive-color="gray">
+      <van-tabbar-item to="/" icon="wap-home-o">首页</van-tabbar-item>
+      <van-tabbar-item to="/category" icon="apps-o">分类</van-tabbar-item>
+      <van-tabbar-item to="/cart" icon="shopping-cart-o">购物车</van-tabbar-item>
+      <van-tabbar-item to="/user" icon="contact">个人中心</van-tabbar-item>
+    </van-tabbar>
+    <router-view />
   </div>
 </template>
-
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+export default {
+  
 }
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+</script>
+<style lang="less">
+#app{
+  padding-bottom: 50px;
 }
 </style>
